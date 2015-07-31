@@ -2,9 +2,7 @@ package collection;
 
 
 import java.util.Stack;
-import java.util.function.BiFunction;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public abstract aspect Fuse pertarget(collection()){
 
@@ -130,16 +128,6 @@ public abstract aspect Fuse pertarget(collection()){
 			return collection;		
 	}
 
-
-//	pointcut forceCompute():
-//		execution(* Collection.forEach(..)) ||
-//		execution(* Collection.reduce(..)) ||
-//		execution(* Collection.fold(..));// ||
-//		//execution(* Collection.get(..));// ||
-////		execution(* Collection.add(..));
-	
-//	pointcut forceCompute():
-//		execution(@ForceFusing * Collection.*(..));
 	
 	pointcut mapOrFilter():
 		map(*) || filter(*);
@@ -169,5 +157,4 @@ public abstract aspect Fuse pertarget(collection()){
 		operationStack.clear();
 		isFusing = true;
 	}
-
 }

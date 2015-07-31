@@ -61,7 +61,6 @@ public class Collection {
 		}
 		return this;
 	}
-	
 
 	// forces the computation of the stored maps and filters
 	public void collectValues() {};
