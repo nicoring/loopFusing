@@ -76,7 +76,6 @@ public class CollectionBenchmark {
 		long endTime = System.nanoTime();
 
 		long duration = endTime - startTime;
-//		System.out.print(nanoToMillis(duration) + "\n");
 		return nanoToMillis(duration);
 	}
 	

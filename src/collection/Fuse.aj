@@ -1,10 +1,11 @@
 package collection;
 
 
+import java.util.List;
 import java.util.Stack;
 import java.util.function.Function;
 
-public abstract aspect Fuse pertarget(collection()){
+public aspect Fuse pertarget(collection()){
 
 	pointcut collection(): target(Collection);
 
@@ -127,21 +128,15 @@ public abstract aspect Fuse pertarget(collection()){
 			}
 			return collection;		
 	}
-
 	
 	pointcut mapOrFilter():
 		map(*) || filter(*);
 
 	pointcut forceCompute():
-		(execution(* Collection.get(..)) ||
-		execution(* Collection.add(..)) ||
-		execution(* Collection.set(..)) ||
-		execution(* Collection.remove(..)) ||
-		execution(* Collection.size()) ||
-		execution(* Collection.isEmpty()) ||
+		(get(List<Integer> Collection.list) ||
+		set(List<Integer> Collection.list) ||
 		execution(* Collection.collectValues())) &&
 		!cflow(mapOrFilter());
-
 
 	before(Collection collection): forceCompute() && target(collection) {
 		isFusing = false;
